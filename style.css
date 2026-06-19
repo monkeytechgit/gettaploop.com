@@ -27,6 +27,11 @@ img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 button, input, textarea, select { font: inherit; }
 
+/* Keep every page inside the viewport, including long links and grid children. */
+html, body { max-width: 100%; overflow-x: clip; }
+main, section, .container, [class*="grid"], [class*="copy"] { min-width: 0; }
+h1, h2, h3, p, a, li, summary { overflow-wrap: anywhere; }
+
 .container { width: min(var(--container), calc(100% - 40px)); margin-inline: auto; }
 .narrow { width: min(900px, calc(100% - 40px)); }
 .center { text-align: center; }
@@ -236,6 +241,56 @@ details p { margin: 0; padding: 0 4px 24px; color: #444; font-size: 15px; line-h
 .contact-link-grid { display: grid; gap: 12px; margin-top: 18px; }
 .contact-link-grid a { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border: 1px solid #eee; border-radius: 12px; background: #fff; font-weight: 700; }
 .contact-link-grid i { color: var(--orange); }
+
+/* Shared layouts used by the secondary and product pages. */
+.lead { color: #424242; font-size: 17px; }
+.team-section h1 {
+  margin: 8px 0 18px;
+  color: #111;
+  font-size: clamp(40px, 5vw, 66px);
+  line-height: 1.05;
+  letter-spacing: -2px;
+}
+.team-section .two-column > img { width: 100%; max-height: 520px; object-fit: contain; }
+.cards-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: 22px;
+}
+.cards-feature-grid article {
+  min-width: 0;
+  padding: 26px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+}
+.cards-feature-grid h3 { margin: 0 0 10px; color: #111827; font-size: 20px; }
+.cards-feature-grid p { margin: 0; color: #4b4b4b; }
+.product-hero { padding: 70px 0; border-bottom: 1px solid var(--line); }
+.product-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+  gap: 48px;
+  align-items: start;
+}
+.product-summary { min-width: 0; }
+.product-summary h1 {
+  margin: 8px 0 18px;
+  color: #111;
+  font-size: clamp(40px, 4.8vw, 66px);
+  line-height: 1.03;
+  letter-spacing: -2.2px;
+}
+.product-highlights {
+  display: grid;
+  gap: 12px;
+  margin: 0 0 26px;
+  padding: 0;
+  list-style: none;
+}
+.product-highlights li { display: flex; align-items: center; gap: 11px; }
+.product-highlights i { color: var(--orange); }
 
 .whatsapp-float {
   positen: fixed;
@@ -1213,4 +1268,207 @@ body.proposal-modal-open {
 
 @media (max-width: 520px) {
   .client-use-grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   RESPONSIVE FOUNDATION
+   These declarations also restore positioning rules that were
+   previously ignored because of misspelled property names.
+   ========================================================= */
+.section,
+.hero-slider,
+.hero-slides,
+.hero-visual,
+.process-step,
+.solution-cards,
+.solution-card,
+.brand-showcase-grid,
+.why-list article,
+.how-hero,
+.how-hero-visual,
+.process-intro-layout,
+.how-step-grid,
+.how-step-card,
+.soft-decor-section > .container,
+.check-list li,
+.teams-hero-copy,
+.teams-hero-visual,
+.teams-benefit-strip article:not(:last-child),
+.teams-profile-section,
+.teams-profile-grid,
+.check-comparison li,
+.implementation-steps,
+.implementation-steps article,
+.use-case-tags span,
+.product-media-grid button { position: relative; }
+.site-header { position: sticky; }
+.whatsapp-float,
+.proposal-modal { position: fixed; }
+.slider-arrow,
+.slider-progress,
+.floating-product,
+.decor-loop,
+.proposal-modal__overlay,
+.proposal-modal__close,
+.proposal-form__loading,
+.how-hero-visual::before,
+.how-hero-visual::after,
+.how-step-grid::before,
+.how-step-number,
+.soft-decor-section::before,
+.soft-decor-section::after,
+.check-list li::before,
+.teams-benefit-strip article:not(:last-child)::after,
+.implementation-steps::before,
+.implementation-steps article > span,
+.use-case-tags span::before,
+.hero-slide,
+.hero-slide .hero-visual::before,
+.product-media-grid button > span { position: absolute; }
+.step-line,
+.process-step:nth-child(-n+3) .step-line::after { position: absolute; }
+.proposal-modal__dialog,
+.hero-slide.is-active,
+.hero-slide .hero-visual img,
+.teams-hero-visual img,
+.how-hero-visual img { position: relative; }
+.btn,
+.whatsapp-float-button,
+.cards-catalog-item { transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+.hero-slide { transition: opacity .55s ease, transform .55s ease, visibility .55s; }
+
+@media (max-width: 1050px) {
+  .product-layout { grid-template-columns: 1fr; gap: 34px; }
+  .product-main-media { min-height: 440px; }
+  .product-summary { max-width: 780px; }
+}
+
+@media (max-width: 980px) {
+  .main-nav { position: fixed; }
+  .slider-arrow { top: auto; bottom: 145px; transform: none; }
+}
+
+@media (max-width: 768px) {
+  .section,
+  .how-page .section,
+  .cards-page .section,
+  .teams-page .section { padding-block: 52px; }
+  .section-heading { margin-bottom: 32px; }
+  .two-column,
+  .about-content-grid,
+  .cards-included-grid,
+  .implementation-intro-grid { gap: 30px; }
+  .team-section h1,
+  .about-page-hero h1,
+  .product-summary h1,
+  .product-detail-copy h1 { font-size: clamp(36px, 8vw, 48px); letter-spacing: -1.5px; }
+  .team-section .two-column > img { max-height: 400px; }
+  summary,
+  .product-accordions summary {
+    grid-template-columns: 38px minmax(0, 1fr) 22px;
+    gap: 12px;
+    min-height: 78px;
+    font-size: 19px;
+  }
+  .faq-icon,
+  .product-accordions summary .faq-icon { width: 32px; height: 32px; font-size: 20px; }
+  .final-cta-card { gap: 24px; }
+  .final-cta-image img { width: 100%; max-height: 320px; }
+  .product-hero { padding: 48px 0; }
+  .product-main-media { min-height: 340px; }
+  .product-main-media img,
+  .product-main-media video { max-height: 380px; }
+  .product-media-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; }
+  .product-media-grid button,
+  .product-media-grid img,
+  .product-media-grid video { min-height: 92px; height: 92px; }
+}
+
+@media (max-width: 600px) {
+  body { font-size: 15px; }
+  .container,
+  .narrow { width: min(100% - 24px, var(--container)); }
+  .nav-wrap { gap: 12px; }
+  .brand img { height: 32px; }
+  .nav-toggle { width: 44px; height: 44px; padding: 8px 10px; cursor: pointer; }
+  .main-nav { top: 68px; left: 12px; right: 12px; max-height: calc(100dvh - 80px); overflow-y: auto; }
+
+  .hero-slide .hero-copy { min-height: 355px; padding: 38px 44px 34px; }
+  .hero-slide .hero-copy h1,
+  .hero-slide .hero-copy h2 { font-size: clamp(31px, 10vw, 40px); letter-spacing: -1px; }
+  .hero-slide .hero-copy p { font-size: 14px; }
+  .hero-slide .hero-visual { min-height: 245px; padding: 18px 28px; }
+  .hero-slide .hero-visual::before { width: 230px; height: 230px; }
+  .hero-slide .hero-visual img,
+  .hero-slide-metal .hero-visual img { width: 100%; max-height: 225px; }
+  .slider-arrow { top: auto; bottom: 103px; transform: none; }
+
+  .two-column,
+  .why-grid,
+  .final-cta-card,
+  .about-content-grid,
+  .product-layout { gap: 26px; }
+  .team-section h1,
+  .about-page-hero h1,
+  .product-summary h1,
+  .product-detail-copy h1,
+  .cards-catalog-hero h1,
+  .teams-hero-copy h1,
+  .how-hero-copy h1 { font-size: clamp(33px, 10vw, 40px); line-height: 1.08; letter-spacing: -1.2px; }
+  .section-heading h2,
+  .cards-page .section-heading h2,
+  .teams-page .section-heading h2,
+  .how-page .section-heading h2 { font-size: clamp(29px, 8vw, 37px); letter-spacing: -1px; }
+  .lead,
+  .about-page-hero p,
+  .teams-hero-copy .lead,
+  .how-hero-copy .lead { font-size: 15px; }
+
+  .solution-card { padding-top: 98px; }
+  .floating-product { width: 78%; max-height: 165px; }
+  .solution-body { min-height: 245px; padding: 58px 20px 24px; border-radius: 28px; }
+  .cards-feature-grid { gap: 14px; }
+  .cards-feature-grid article,
+  .review-card,
+  .about-content-card { padding: 20px; }
+  .why-list article { grid-template-columns: 44px minmax(0, 1fr); gap: 12px; }
+  .why-list article > span { width: 40px; height: 40px; }
+  .why-list h3 { font-size: 20px; }
+  .reviews-wall-grid,
+  .product-review-grid,
+  .client-use-grid { grid-template-columns: 1fr; }
+  .review-card p { min-height: 0; }
+
+  .final-cta-card { padding: 24px 18px; border-radius: 22px; }
+  .final-cta-copy h2,
+  .teams-final-cta .final-cta-copy h2 { font-size: clamp(33px, 9vw, 42px); }
+  .benefit-chips { align-items: stretch; flex-direction: column; }
+  .benefit-chips span { width: 100%; }
+  .final-cta-copy > .btn { width: 100%; }
+
+  .product-main-media { min-height: 270px; }
+  .product-media-grid { display: flex; overflow-x: auto; padding-bottom: 5px; scroll-snap-type: x mandatory; }
+  .product-media-grid button { flex: 0 0 82px; min-height: 78px; height: 78px; scroll-snap-align: start; }
+  .product-media-grid img,
+  .product-media-grid video { min-height: 74px; height: 74px; }
+  .cards-catalog-item img { height: 220px; }
+  .cards-catalog-item .btn { width: 100%; }
+
+  .proposal-form__grid { grid-template-columns: 1fr; }
+  .proposal-field--wide { grid-column: auto; }
+  .whatsapp-float { right: 12px; bottom: 12px; }
+  .whatsapp-float-message { max-width: calc(100vw - 24px); white-space: normal; }
+  .whatsapp-float-button { width: 54px; height: 54px; font-size: 27px; }
+  .footer-grid { gap: 26px; }
+}
+
+@media (max-width: 380px) {
+  .hero-slide .hero-copy { padding-inline: 38px; }
+  .slider-arrow.prev { left: 8px; }
+  .slider-arrow.next { right: 8px; }
+  summary,
+  .product-accordions summary { grid-template-columns: 30px minmax(0, 1fr) 18px; gap: 8px; font-size: 17px; }
+  .faq-icon,
+  .product-accordions summary .faq-icon { width: 28px; height: 28px; font-size: 18px; }
+  .button-row .btn { padding-inline: 14px; }
 }
