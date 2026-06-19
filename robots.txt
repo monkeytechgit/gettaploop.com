@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Discovery files for search engines
+Sitemap: https://www.gettaploop.com/sitemap.xml
+
+# Site resources allowed for rendering and indexing
+Allow: /assets/
+Allow: /style.css
+Allow: /script.js
+
+# Keep development and temporary files out of the index
+Disallow: /.git/
+Disallow: /.codex/
+Disallow: /.agents/
+Disallow: /node_modules/
+Disallow: /tmp/
+Disallow: /private/
