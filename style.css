@@ -774,22 +774,25 @@ body.proposal-modal-open {
 
 .cards-included-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 44px; align-items: center; }
 .cards-included-section .business-benefit-grid .round-icon { width: auto; height: auto; border-radius: 0; background: transparent; color: var(--orange); font-size: 25px; }
-.cards-included-visual img { width: 100%; max-height: 520px; object-fit: contain; }
+.cards-included-visual { overflow: hidden; }
+.cards-included-visual img { width: 100%; max-height: 520px; object-fit: contain; clip-path: inset(4px); transform: scale(1.01); }
 .cards-page .cards-included-section .business-benefit-grid h3 { font-size: 15px; }
 .cards-page .cards-included-section .business-benefit-grid p { font-size: 12px; }
 .cards-team-section { background: #fff; }
-.cards-team-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: center; }
+.cards-team-grid { display: grid; grid-template-columns: .9fr 1.1fr; grid-template-areas: "copy visual"; gap: 48px; align-items: center; }
+.cards-team-grid > div { grid-area: copy; }
 .cards-team-grid .section-heading { margin-bottom: 28px; }
 .cards-team-grid .section-heading > p:last-child { margin-inline: 0; }
 .cards-team-grid .feature-list { margin-bottom: 28px; }
 .cards-team-grid .round-icon { width: 50px; height: 50px; display: grid; place-items: center; border-radius: 50%; color: var(--orange); background: var(--orange-soft); }
-.cards-team-grid > img { width: 100%; max-height: 570px; object-fit: contain; }
+.cards-team-grid > img { grid-area: visual; width: 100%; max-height: 570px; object-fit: contain; }
 .cards-final-cta .final-cta-image img { width: 100%; max-height: 410px; object-fit: contain; }
 
 @media (max-width: 1050px) {
   .cards-product-card,
   .cards-included-grid,
   .cards-team-grid { grid-template-columns: 1fr; }
+  .cards-team-grid { grid-template-areas: "copy" "visual"; }
   .cards-catalog-grid { gap: 22px; }
   .cards-catalog-item { grid-template-rows: auto auto; }
   .cards-catalog-item img { height: 290px; }
