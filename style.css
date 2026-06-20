@@ -127,6 +127,20 @@ button, input, textarea, select { font: inherit; }
 .process-step h3 { margin: 0 0 8px; font-size: 20px; }
 .process-step p { margin: 0 auto 18px; color: #383838; font-size: 14px; max-width: 210px; }
 
+.home-process-section .process-grid { position: relative; gap: 30px; }
+.home-process-section .process-grid::before { content: ""; position: absolute; z-index: 0; top: 35px; left: 12.5%; right: 12.5%; height: 4px; background: var(--orange); }
+.home-process-section .process-step { z-index: 1; }
+.home-process-section .step-number { position: relative; box-shadow: 0 0 0 8px #fff; }
+.home-process-section .icon-placeholder { margin-top: 10px; }
+.home-process-section .process-step .btn { margin-top: 2px; }
+
+.home-product-showcase { padding: 86px 0 96px; border-top: 1px solid #f3f3f3; background: #fff; }
+.home-product-showcase .section-heading { margin-bottom: 22px; }
+.home-product-showcase .section-heading h2 { font-size: clamp(34px, 5vw, 66px); }
+.home-product-showcase .section-heading p { max-width: 960px; font-size: clamp(16px, 1.7vw, 23px); }
+.home-product-image { width: min(100%, 1050px); max-height: 590px; margin: 6px auto 24px; object-fit: contain; }
+.home-product-button { display: flex; width: max-content; margin: 0 auto; }
+
 .solutions-section { background: linear-gradient(180deg,#fff 0%,#fff 70%,#fff7f3 100%); }
 .solution-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; max-width: 760px; margin: 0 auto; position: relative; z-index: 2; }
 .solution-card { position: relative; display: flex; padding-top: 145px; }
@@ -542,6 +556,7 @@ body.proposal-modal-open {
   .hero-visual { min-height: 330px; }
   .process-grid { grid-template-columns: repeat(2,1fr); }
   .process-step:nth-child(2) .step-line { display: none; }
+  .home-process-section .process-grid::before { display: none; }
   .solution-cards, .brand-showcase-grid, .reviews-grid { gap: 22px; }
   .footer-grid { grid-template-columns: repeat(2,1fr); }
 }
@@ -557,6 +572,9 @@ body.proposal-modal-open {
   .slider-arrow { width: 34px; height: 34px; }
   .process-grid, .solution-cards, .brand-showcase-grid, .reviews-grid, .about-stat-grid { grid-template-columns: 1fr; }
   .step-line { display: none; }
+  .home-product-showcase { padding: 58px 0 64px; }
+  .home-product-showcase .section-heading { margin-bottom: 16px; }
+  .home-product-image { margin-top: 0; margin-bottom: 18px; }
   .solution-card { padding-top: 120px; }
   .brand-example img { height: 290px; }
   .reviews-cta, .faq-cta { align-items: flex-start; flex-direction: column; }
