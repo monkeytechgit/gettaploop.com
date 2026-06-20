@@ -1232,16 +1232,25 @@ body.proposal-modal-open {
 .client-use-grid img { width: 100%; height: 280px; margin-top: auto; object-fit: contain; }
 .product-faq-section { background: #fff; }
 
-.reviews-hero { padding: 62px 0 30px; background: #fff; }
+.reviews-hero { padding: 105px 0 76px; background: #fff; }
 .reviews-hero h1 { max-width: 900px; margin: 8px auto 12px; color: #111; font-size: clamp(38px, 4.7vw, 66px); line-height: 1.05; letter-spacing: -2px; }
+.reviews-hero .section-heading { margin-bottom: 0; }
+.reviews-hero .section-heading > p:not(.eyebrow) { max-width: 800px; margin-inline: auto; }
 .reviews-wall-section { background: #fff; }
+.reviews-wall-section .section-heading h2,
+.review-benefits-section .section-heading h2,
+.reviews-faq-section .section-heading h2 { color: var(--orange); font-size: clamp(38px, 4.8vw, 64px); line-height: 1.08; letter-spacing: -2px; }
 .reviews-wall-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 22px; }
-.review-story-card { min-height: 410px; display: flex; flex-direction: column; padding: 18px; background: #fff; border: 1px solid #eee; border-radius: 18px; box-shadow: var(--shadow); }
-.review-story-card img { width: 100%; height: 170px; object-fit: cover; border-radius: 12px; margin-bottom: 14px; background: var(--orange-soft); }
+.review-story-card { min-height: 490px; display: flex; flex-direction: column; padding: 18px; background: #fff; border: 1px solid #eee; border-radius: 18px; box-shadow: var(--shadow); }
+.review-story-card img { width: 100%; height: 205px; object-fit: cover; border-radius: 12px; margin-bottom: 14px; background: var(--orange-soft); }
 .review-story-card span { color: var(--orange); letter-spacing: 2px; font-size: 13px; }
-.review-story-card p { margin: 12px 0 18px; color: #333; font-size: 13px; }
+.review-story-card p { margin: 12px 0 18px; color: #333; font-size: 13px; line-height: 1.55; }
 .review-story-card strong { margin-top: auto; color: #111; }
 .review-story-card small { margin-top: 4px; color: var(--muted); }
+.review-benefits-section { background: #fff; }
+.review-benefit-grid article { min-height: 235px; }
+.review-benefit-grid article > i { display: block; margin-bottom: 22px; color: var(--orange); font-size: 26px; text-align: center; }
+.review-benefit-actions { margin-top: 0; }
 
 @media (max-width: 1050px) {
   .product-detail-grid { grid-template-columns: 1fr; }
@@ -1273,12 +1282,18 @@ body.proposal-modal-open {
   .product-page .product-client-use-section .section-heading > p:last-child { font-size: 15px; }
   .product-accordion-body { padding-left: 4px; }
   .review-story-card { min-height: auto; }
+  .reviews-hero { padding: 68px 0 48px; }
+  .reviews-wall-section .section-heading h2,
+  .review-benefits-section .section-heading h2,
+  .reviews-faq-section .section-heading h2 { font-size: 38px; letter-spacing: -1.2px; }
   .client-use-grid article { min-height: 410px; }
   .client-use-grid img { height: 230px; }
 }
 
 @media (max-width: 520px) {
-  .client-use-grid { grid-template-columns: 1fr; }
+  .client-use-grid,
+  .reviews-wall-grid { grid-template-columns: 1fr; }
+  .review-benefit-actions .btn { width: 100%; }
 }
 
 /* Compatibility for the English page templates.
