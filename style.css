@@ -126,6 +126,7 @@ button, input, textarea, select { font: inherit; }
 .icon-placeholder { display: block; font-size: 26px; color: #111; margin: 0 0 8px; }
 .process-step h3 { margin: 0 0 8px; font-size: 20px; }
 .process-step p { margin: 0 auto 18px; color: #383838; font-size: 14px; max-width: 210px; }
+.project-delivery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 900px; margin-inline: auto; }
 
 .home-process-section .process-grid { position: relative; gap: 30px; }
 .home-process-section .process-grid::before { content: ""; position: absolute; z-index: 0; top: 35px; left: 12.5%; right: 12.5%; height: 4px; background: var(--orange); }
@@ -555,6 +556,7 @@ body.proposal-modal-open {
   .hero-copy { padding: 48px 28px; }
   .hero-visual { min-height: 330px; }
   .process-grid { grid-template-columns: repeat(2,1fr); }
+  .project-delivery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .process-step:nth-child(2) .step-line { display: none; }
   .home-process-section .process-grid::before { display: none; }
   .solution-cards, .brand-showcase-grid, .reviews-grid { gap: 22px; }
