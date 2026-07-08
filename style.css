@@ -1016,7 +1016,7 @@ body.proposal-modal-open {
 .hero-slide .hero-copy > * {
   width: min(100%, 520px);
   margin-inline: auto;
-  transform: translateX(clamp(34px, 4.5vw, 96px));
+  transform: translateX(clamp(58px, 6vw, 128px));
 }
 
 .hero-slide .hero-copy .eyebrow {
