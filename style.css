@@ -1016,6 +1016,7 @@ body.proposal-modal-open {
 .hero-slide .hero-copy > * {
   width: min(100%, 520px);
   margin-inline: auto;
+  transform: translateX(clamp(34px, 4.5vw, 96px));
 }
 
 .hero-slide .hero-copy .eyebrow {
@@ -1124,6 +1125,10 @@ body.proposal-modal-open {
 
   .hero-slide .hero-copy {
     padding: 46px 64px 42px;
+  }
+
+  .hero-slide .hero-copy > * {
+    transform: none;
   }
 
   .hero-slide .hero-visual {
