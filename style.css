@@ -33,22 +33,6 @@ button, input, textarea, select { font: inherit; }
 .section { position: relative; padding: 76px 0; overflow: hidden; }
 .section.muted { background: #fdfdfd; }
 
-.shipping-banner {
-  min-height: 38px;
-  padding: 7px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  color: #fff;
-  background: linear-gradient(90deg, #ff563f 0%, #ff765c 100%);
-  font-size: 14px;
-  font-weight: 700;
-  text-align: center;
-}
-.shipping-banner i { font-size: 16px; }
-.shipping-banner-flags { letter-spacing: 2px; white-space: nowrap; }
-
 .site-header {
   position: sticky;
   top: 0;
@@ -580,9 +564,6 @@ body.proposal-modal-open {
 }
 
 @media (max-width: 680px) {
-  .shipping-banner { min-height: 34px; padding: 6px 8px; gap: 6px; font-size: 12px; }
-  .shipping-banner i { font-size: 14px; }
-  .shipping-banner-flags { letter-spacing: 0; }
   .section { padding: 56px 0; }
   .container { width: min(100% - 24px, var(--container)); }
   .nav-wrap { min-height: 74px; }
@@ -1022,7 +1003,8 @@ body.proposal-modal-open {
 }
 
 .hero-slide .hero-copy {
-  padding: 54px max(70px, calc((100vw - 1180px) / 2)) 54px max(70px, calc((100vw - 1180px) / 2));
+  min-width: 0;
+  padding: 54px clamp(48px, 5.5vw, 96px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1031,13 +1013,18 @@ body.proposal-modal-open {
   background: var(--orange);
 }
 
+.hero-slide .hero-copy > * {
+  width: min(100%, 520px);
+  margin-inline: auto;
+}
+
 .hero-slide .hero-copy .eyebrow {
   color: #fff;
 }
 
 .hero-slide .hero-copy h1,
 .hero-slide .hero-copy h2 {
-  margin: 4px 0 14px;
+  margin: 4px auto 14px;
   color: #fff;
   font-size: clamp(34px, 4vw, 54px);
   line-height: 1.08;
@@ -1046,7 +1033,7 @@ body.proposal-modal-open {
 
 .hero-slide .hero-copy p {
   max-width: 560px;
-  margin: 0 0 22px;
+  margin: 0 auto 22px;
 }
 
 .hero-slide .hero-visual {
@@ -1351,6 +1338,38 @@ body.proposal-modal-open {
   object-fit: contain;
 }
 .cards-feature-grid article > .btn { margin-top: 20px; }
+
+/* Softer cards on information-heavy pages. */
+.how-page .cards-feature-grid article,
+.how-page .how-step-card,
+.how-page .use-card,
+.how-page .access-card,
+.how-page .function-grid article,
+.how-page .final-cta-card,
+.teams-page .teams-benefit-strip article,
+.teams-page .teams-info-grid article,
+.teams-page .teams-product-card,
+.teams-page .comparison-card,
+.teams-page .implementation-steps article,
+.teams-page .business-benefit-grid article,
+.teams-page .use-case-card,
+.teams-page .final-cta-card,
+.reviews-page .review-story-card,
+.reviews-page .review-card,
+.reviews-page .rating-badge,
+.reviews-page .cards-feature-grid article,
+.reviews-page .final-cta-card {
+  box-shadow: none;
+  border-color: #e8e8e8;
+}
+
+.how-page .benefit-chips span,
+.how-page .info-chips span,
+.teams-page .benefit-chips span,
+.reviews-page .benefit-chips span {
+  box-shadow: none;
+  border: 1px solid #eeeeee;
+}
 
 .product-hero { padding: 70px 0; background: #fff; border-bottom: 1px solid var(--line); }
 .product-layout {
