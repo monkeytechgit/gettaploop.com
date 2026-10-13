@@ -1,136 +1,317 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://www.gettaploop.com/</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.00</priority>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
-      <image:loc>https://www.gettaploop.com/assets/images/nfc-card-hero-2.webp</image:loc>
-      <image:title>Digital NFC Business Cards for Businesses | TapLoop</image:title>
-      <image:caption>TapLoop creates custom digital NFC business cards with QR codes, editable profiles, WhatsApp links, and team options for companies across the United States.</image:caption>
+      <image:loc>https://www.gettaploop.com/assets/image/hero-index.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://www.gettaploop.com/assets/images/video-posters/pvc-card.mp4.webp</video:thumbnail_loc>
+      <video:title>TapLoop PVC NFC Card in action</video:title>
+      <video:description>Demo of a TapLoop PVC NFC card sharing a digital profile via NFC and QR code.</video:description>
+      <video:content_loc>https://www.gettaploop.com/assets/video/pvc-card.mp4</video:content_loc>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://www.gettaploop.com/assets/images/video-posters/metal-card.mp4.webp</video:thumbnail_loc>
+      <video:title>TapLoop Metal NFC Card in action</video:title>
+      <video:description>Demo of a TapLoop metal NFC card with a digital profile for professionals and businesses.</video:description>
+      <video:content_loc>https://www.gettaploop.com/assets/video/metal-card.mp4</video:content_loc>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/8q5r5taEo6o/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>TapLoop: Full platform tutorial</video:title>
+      <video:description>Full TapLoop platform tutorial covering the digital NFC card, leads, and analytics.</video:description>
+      <video:player_loc allow_embed="yes">https://www.youtube-nocookie.com/embed/8q5r5taEo6o</video:player_loc>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/nfc-business-cards.html</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/image/products/pvc-card-1.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/image/products/metal-card-1.webp</image:loc>
     </image:image>
   </url>
   <url>
-    <loc>https://www.gettaploop.com/nfc-cards.html</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
+    <loc>https://www.gettaploop.com/nfc-cards-new-york.html</loc>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
-      <image:loc>https://www.gettaploop.com/assets/images/pvc-product-composition.webp</image:loc>
-      <image:title>PVC and Metal NFC Business Cards | TapLoop</image:title>
-      <image:caption>Compare TapLoop PVC and metal NFC business cards with editable digital profiles, QR codes, WhatsApp, social links, and branded design for US companies.</image:caption>
+      <image:loc>https://www.gettaploop.com/assets/image/products/pvc-card-1.webp</image:loc>
     </image:image>
   </url>
   <url>
-    <loc>https://www.gettaploop.com/pvc-nfc-business-card.html</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
+    <loc>https://www.gettaploop.com/nfc-cards-miami.html</loc>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
-      <image:loc>https://www.gettaploop.com/assets/images/pvc/pvc-1.jpg</image:loc>
-      <image:title>Custom PVC Digital NFC Business Card | TapLoop</image:title>
-      <image:caption>Order a custom PVC digital NFC business card with an editable profile, QR code, WhatsApp, website, social links, and savable contact details.</image:caption>
+      <image:loc>https://www.gettaploop.com/assets/image/products/pvc-card-1.webp</image:loc>
     </image:image>
   </url>
   <url>
-    <loc>https://www.gettaploop.com/metal-nfc-business-card.html</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
+    <loc>https://www.gettaploop.com/nfc-cards-los-angeles.html</loc>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
-      <image:loc>https://www.gettaploop.com/assets/images/metal/metal-1.jpg</image:loc>
-      <image:title>Premium Metal NFC Business Card | TapLoop</image:title>
-      <image:caption>Create a premium metal NFC business card with an editable digital profile, QR code, WhatsApp, and custom finish for executives and consultants.</image:caption>
+      <image:loc>https://www.gettaploop.com/assets/image/products/pvc-card-1.webp</image:loc>
     </image:image>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/nfc-cards-houston.html</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/image/products/pvc-card-1.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/pvc-nfc-card.html</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/image/products/pvc-card-1.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/image/products/pvc-card-2.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/image/products/pvc-card-3.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/image/products/pvc-card-4.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/image/products/pvc-card-5.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/image/products/pvc-card-6.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/image/products/pvc-card-7.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://www.gettaploop.com/assets/images/video-posters/pvc-card.mp4.webp</video:thumbnail_loc>
+      <video:title>Custom TapLoop PVC NFC Card</video:title>
+      <video:description>Demo of a custom TapLoop PVC NFC card with digital profile, NFC, and QR code.</video:description>
+      <video:content_loc>https://www.gettaploop.com/assets/video/pvc-card.mp4</video:content_loc>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/VVfdq-J2Q08/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>How to use your TapLoop card</video:title>
+      <video:description>A step-by-step guide to using a TapLoop card with NFC tap and QR code on PVC and metal.</video:description>
+      <video:player_loc allow_embed="yes">https://www.youtube-nocookie.com/embed/VVfdq-J2Q08</video:player_loc>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/metal-nfc-card.html</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/image/products/metal-card-1.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/image/products/metal-card-2.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/image/products/metal-card-3.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/image/products/metal-card-4.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/image/products/metal-card-5.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/image/products/metal-card-6.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/image/products/metal-card-7.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://www.gettaploop.com/assets/images/video-posters/metal-card.mp4.webp</video:thumbnail_loc>
+      <video:title>Custom TapLoop Metal NFC Card</video:title>
+      <video:description>Demo of a custom TapLoop metal NFC card with digital profile, NFC, and QR code.</video:description>
+      <video:content_loc>https://www.gettaploop.com/assets/video/metal-card.mp4</video:content_loc>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://www.gettaploop.com/assets/review-media/posters/taploop_m.MOV.webp</video:thumbnail_loc>
+      <video:title>Delivered TapLoop metal NFC card</video:title>
+      <video:description>Video example of a finished TapLoop metal NFC card, ready to use.</video:description>
+      <video:content_loc>https://www.gettaploop.com/assets/review-media/taploop_m.MOV</video:content_loc>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/VVfdq-J2Q08/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>How to use your TapLoop card</video:title>
+      <video:description>A step-by-step guide to using a TapLoop card with NFC tap and QR code on PVC and metal.</video:description>
+      <video:player_loc allow_embed="yes">https://www.youtube-nocookie.com/embed/VVfdq-J2Q08</video:player_loc>
+    </video:video>
   </url>
   <url>
     <loc>https://www.gettaploop.com/for-teams.html</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.90</priority>
+    <lastmod>2026-10-12</lastmod>
     <image:image>
       <image:loc>https://www.gettaploop.com/assets/images/teams-hero.webp</image:loc>
-      <image:title>NFC Business Cards for Teams and Companies | TapLoop</image:title>
-      <image:caption>Equip every employee with branded NFC business cards, editable digital profiles, QR codes, WhatsApp links, and consistent design for US teams.</image:caption>
     </image:image>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/image/team.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/image/team-taploop.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/8q5r5taEo6o/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>TapLoop: Full platform tutorial</video:title>
+      <video:description>Full TapLoop platform tutorial covering the digital NFC card, leads, and analytics.</video:description>
+      <video:player_loc allow_embed="yes">https://www.youtube-nocookie.com/embed/8q5r5taEo6o</video:player_loc>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/reviews.html</loc>
+    <lastmod>2026-10-12</lastmod>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/review-media/review4_p.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/review-media/review2_m.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/review-media/review11_p.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/review-media/review19_m.webp</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://www.gettaploop.com/assets/review-media/posters/review13_p.MOV.webp</video:thumbnail_loc>
+      <video:title>Completed TapLoop PVC NFC card project</video:title>
+      <video:description>Video of a custom PVC NFC card featured in TapLoop's gallery of completed work.</video:description>
+      <video:content_loc>https://www.gettaploop.com/assets/review-media/review13_p.MOV</video:content_loc>
+    </video:video>
   </url>
   <url>
     <loc>https://www.gettaploop.com/how-it-works.html</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
-      <image:loc>https://www.gettaploop.com/assets/images/how-it-works-hero.webp</image:loc>
-      <image:title>How Digital NFC Business Cards Work | TapLoop</image:title>
-      <image:caption>Learn how TapLoop digital NFC business cards work: tap the card or scan the QR code to open a profile with contact details, WhatsApp, and links.</image:caption>
+      <image:loc>https://www.gettaploop.com/assets/image/hero-how-it-works.webp</image:loc>
     </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/8q5r5taEo6o/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>TapLoop: Full platform tutorial</video:title>
+      <video:description>Full TapLoop platform tutorial covering the digital NFC card, leads, and analytics.</video:description>
+      <video:player_loc allow_embed="yes">https://www.youtube-nocookie.com/embed/8q5r5taEo6o</video:player_loc>
+    </video:video>
   </url>
   <url>
     <loc>https://www.gettaploop.com/about-taploop.html</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://www.gettaploop.com/assets/images/teams-hero.webp</image:loc>
-      <image:title>About TapLoop | NFC Business Card Company</image:title>
-      <image:caption>Learn about TapLoop, a digital NFC business card company creating custom NFC cards, editable profiles, QR codes, WhatsApp links, and team solutions.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://www.gettaploop.com/who-we-are.html</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
+    <loc>https://www.gettaploop.com/about-us.html</loc>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
-      <image:loc>https://www.gettaploop.com/assets/images/taploop-team.webp</image:loc>
-      <image:title>TapLoop Team | NFC Business Card Experts</image:title>
-      <image:caption>Meet TapLoop, a team helping professionals and companies replace paper cards with reusable NFC business cards and editable digital profiles.</image:caption>
+      <image:loc>https://www.gettaploop.com/assets/images/teams-hero.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/image/team-taploop.webp</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://www.gettaploop.com/what-we-do.html</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://www.gettaploop.com/assets/images/teams-pvc-option.webp</image:loc>
-      <image:title>NFC Card Design, Programming, and Delivery | TapLoop</image:title>
-      <image:caption>TapLoop designs, programs, tests, and delivers digital NFC business cards with editable profiles, QR codes, WhatsApp links, and team-ready setup.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://www.gettaploop.com/projects.html</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.75</priority>
+    <loc>https://www.gettaploop.com/case-studies.html</loc>
+    <lastmod>2026-09-21</lastmod>
+    <image:image>
+      <image:loc>https://www.gettaploop.com/assets/images/teams-hero.webp</image:loc>
+    </image:image>
     <image:image>
       <image:loc>https://www.gettaploop.com/assets/images/teams-corporate-case.webp</image:loc>
-      <image:title>NFC Business Card Projects for Companies | TapLoop</image:title>
-      <image:caption>Explore TapLoop NFC business card projects for sales teams, companies, executives, events, automotive advisors, and professionals in the United States.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://www.gettaploop.com/contact.html</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
+    <lastmod>2026-09-21</lastmod>
     <image:image>
       <image:loc>https://www.gettaploop.com/assets/images/teams-pvc-option.webp</image:loc>
-      <image:title>Request a Digital NFC Business Card Quote | TapLoop</image:title>
-      <image:caption>Contact TapLoop to request a quote for digital NFC business cards, PVC cards, metal NFC cards, digital profiles, and team solutions in the United States.</image:caption>
     </image:image>
   </url>
   <url>
-    <loc>https://www.gettaploop.com/reviews.html</loc>
-    <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
-    <image:image>
-      <image:loc>https://www.gettaploop.com/assets/images/teams-pvc-option.webp</image:loc>
-      <image:title>TapLoop Reviews | Digital NFC Business Card Customers</image:title>
-      <image:caption>Read TapLoop reviews from professionals and teams using digital NFC business cards for sales, networking, WhatsApp, websites, and faster follow-up.</image:caption>
-    </image:image>
+    <loc>https://www.gettaploop.com/blog.html</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/blog-what-is-an-nfc-card.html</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/blog-digital-vs-traditional-business-cards.html</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/blog-how-to-choose-pvc-or-metal-nfc-card.html</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/blog-nfc-cards-for-businesses.html</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/blog-nfc-digital-profile-ideas.html</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/blog-nfc-card-or-qr-code.html</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/blog-networking-with-nfc-cards.html</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/blog-what-are-smart-cards.html</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/blog-complete-guide-to-nfc-cards.html</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/blog-how-to-create-a-digital-business-card-step-by-step.html</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/blog-pros-and-cons-of-nfc-cards.html</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/blog-nfc-cards-for-professionals-and-businesses.html</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/blog-nfc-card-security-and-privacy.html</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/blog-how-to-design-an-nfc-card-that-stands-out.html</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/blog-nfc-cards-for-sales-and-lead-generation.html</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/blog-corporate-gifts-metal-nfc-cards.html</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/blog-nfc-card-vs-linktree-link-in-bio.html</loc>
+    <lastmod>2026-09-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gettaploop.com/blog-nfc-cards-faq-iphone-android.html</loc>
+    <lastmod>2026-09-21</lastmod>
   </url>
 </urlset>

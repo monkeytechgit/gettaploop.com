@@ -1,5 +1,105 @@
 const toggle = document.querySelector('.nav-toggle');
 const nav = document.querySelector('.main-nav');
+const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+const normalizeLabel = (value) => value.replace(/\s+/g, ' ').trim().toLowerCase();
+
+const isQuoteTriggerLabel = (label) => (
+  label.includes('request a quote') ||
+  label.includes('get a quote') ||
+  label.includes('quote') ||
+  label.includes('start my proposal') ||
+  label.includes('get my proposal') ||
+  label.includes('get a proposal') ||
+  label.includes('request a proposal') ||
+  label.includes('request proposal')
+);
+
+const setupPageMotion = () => {
+  if (motionQuery.matches) return;
+
+  const revealSelectors = [
+    'main > section',
+    'main section .section-heading',
+    'main section article',
+    'main section .final-cta-card',
+    'main section .teams-overview-card',
+    'main section .product-media',
+    'main section .product-accordions details',
+    'main section .faq-list details',
+    'main section .brand-mockup-card',
+    'main section .platform-suite-grid article',
+    'main section img',
+  ];
+
+  const revealItems = Array.from(document.querySelectorAll(revealSelectors.join(',')))
+    .filter((element, index, list) => list.indexOf(element) === index)
+    .filter((element) => !element.closest('.site-header, .proposal-modal, .whatsapp-float'));
+
+  revealItems.forEach((element, index) => {
+    element.classList.add('reveal-on-scroll');
+    element.style.setProperty('--reveal-delay', `${Math.min(index % 6, 5) * 45}ms`);
+  });
+
+  if (!('IntersectionObserver' in window)) {
+    revealItems.forEach((element) => element.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    });
+  }, {
+    rootMargin: '0px 0px -8% 0px',
+    threshold: 0.12,
+  });
+
+  revealItems.forEach((element) => {
+    const rect = element.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.92) {
+      element.classList.add('is-visible');
+      return;
+    }
+
+    observer.observe(element);
+  });
+
+  document.querySelectorAll('a[href]').forEach((link) => {
+    const href = link.getAttribute('href');
+    const label = normalizeLabel(link.textContent || '');
+    if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+    if (link.target && link.target !== '_self') return;
+    if (link.hasAttribute('download')) return;
+    if (isQuoteTriggerLabel(label)) return;
+
+    const url = new URL(href, window.location.href);
+    if (url.origin !== window.location.origin || url.pathname === window.location.pathname && url.hash) return;
+
+    link.addEventListener('click', (event) => {
+      if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      document.body.classList.add('is-page-leaving');
+      window.setTimeout(() => {
+        window.location.href = url.href;
+      }, 150);
+    });
+  });
+};
+
+const resetPageTransitionState = () => {
+  document.body.classList.remove('is-page-leaving');
+};
+
+window.addEventListener('pageshow', resetPageTransitionState);
+window.addEventListener('load', resetPageTransitionState);
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) resetPageTransitionState();
+});
+
+setupPageMotion();
 
 if (toggle && nav) {
   toggle.addEventListener('click', () => {
@@ -11,67 +111,9 @@ if (toggle && nav) {
 document.querySelectorAll('details').forEach((item) => {
   item.addEventListener('toggle', () => {
     const symbol = item.querySelector('summary b');
-    if (symbol) symbol.textContent = item.open ? '-' : '+';
+    if (symbol) symbol.textContent = item.open ? '−' : '+';
   });
 });
-
-const heroSlider = document.querySelector('[data-hero-slider]');
-
-if (heroSlider) {
-  const slides = Array.from(heroSlider.querySelectorAll('[data-hero-slide]'));
-  const dots = Array.from(heroSlider.querySelectorAll('[data-hero-dot]'));
-  const previousButton = heroSlider.querySelector('.slider-arrow.prev');
-  const nextButton = heroSlider.querySelector('.slider-arrow.next');
-  let currentSlide = 0;
-  let autoPlayTimer;
-
-  const showSlide = (index) => {
-    currentSlide = (index + slides.length) % slides.length;
-
-    slides.forEach((slide, slideIndex) => {
-      const active = slideIndex === currentSlide;
-      slide.classList.toggle('is-active', active);
-      slide.setAttribute('aria-hidden', String(!active));
-    });
-
-    dots.forEach((dot, dotIndex) => {
-      const active = dotIndex === currentSlide;
-      dot.classList.toggle('is-active', active);
-      dot.setAttribute('aria-current', active ? 'true' : 'false');
-    });
-  };
-
-  const stopAutoPlay = () => window.clearInterval(autoPlayTimer);
-  const startAutoPlay = () => {
-    stopAutoPlay();
-    autoPlayTimer = window.setInterval(() => showSlide(currentSlide + 1), 6500);
-  };
-
-  previousButton?.addEventListener('click', () => {
-    showSlide(currentSlide - 1);
-    startAutoPlay();
-  });
-
-  nextButton?.addEventListener('click', () => {
-    showSlide(currentSlide + 1);
-    startAutoPlay();
-  });
-
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-      showSlide(index);
-      startAutoPlay();
-    });
-  });
-
-  heroSlider.addEventListener('mouseenter', stopAutoPlay);
-  heroSlider.addEventListener('mouseleave', startAutoPlay);
-  heroSlider.addEventListener('focusin', stopAutoPlay);
-  heroSlider.addEventListener('focusout', startAutoPlay);
-
-  showSlide(0);
-  startAutoPlay();
-}
 
 document.querySelectorAll('[data-card-link]').forEach((card) => {
   const target = card.dataset.cardLink;
@@ -115,7 +157,6 @@ document.querySelectorAll('.product-media').forEach((gallery) => {
         const video = document.createElement('video');
         video.src = src;
         video.controls = true;
-        video.muted = true;
         video.playsInline = true;
         video.autoplay = true;
         if (poster) video.poster = poster;
@@ -134,18 +175,14 @@ document.querySelectorAll('.product-media').forEach((gallery) => {
 });
 
 const currentPath = window.location.pathname;
-let whatsappMessage = 'I am interested in TapLoop products.';
+let whatsappMessage = "I'm interested in TapLoop's products.";
 
-if (currentPath.endsWith('/pvc-nfc-business-card.html')) {
-  whatsappMessage = 'I am interested in the TapLoop PVC Digital NFC Card.';
+if (currentPath.endsWith('/pvc-nfc-card.html')) {
+  whatsappMessage = "I'm interested in TapLoop's PVC NFC Card.";
 }
 
-if (currentPath.endsWith('/metal-nfc-business-card.html')) {
-  whatsappMessage = 'I am interested in the TapLoop Metal NFC Card.';
-}
-
-if (currentPath.endsWith('/for-teams.html')) {
-  whatsappMessage = 'I am interested in TapLoop NFC cards for my team.';
+if (currentPath.endsWith('/metal-nfc-card.html')) {
+  whatsappMessage = "I'm interested in TapLoop's Metal NFC Card.";
 }
 
 const whatsappUrl = `https://wa.me/526643053834?text=${encodeURIComponent(whatsappMessage)}`;
@@ -157,35 +194,62 @@ const emailJsTemplateId = 'template_y4y0gl8';
 const emailJsPublicKey = '5vTFdcXJ0G3y7ZaPs';
 
 const proposalOptions = [
-  { value: 'pvc', label: 'PVC Digital NFC Card', icon: 'fa-solid fa-id-card' },
-  { value: 'metal', label: 'Metal NFC Card', icon: 'fa-regular fa-gem' },
-  { value: 'both', label: 'PVC and Metal Cards', icon: 'fa-solid fa-layer-group' },
-  { value: 'team', label: 'NFC Cards for My Team', icon: 'fa-solid fa-users' },
-  { value: 'guidance', label: 'I Need Help Choosing', icon: 'fa-solid fa-comments' },
+  {
+    value: 'pvc',
+    label: 'PVC NFC Card',
+    icon: 'fa-solid fa-id-card',
+  },
+  {
+    value: 'metal',
+    label: 'Metal NFC Card',
+    icon: 'fa-regular fa-gem',
+  },
+  {
+    value: 'both',
+    label: 'Both',
+    icon: 'fa-solid fa-layer-group',
+  },
+  {
+    value: 'team',
+    label: 'NFC Cards for My Team',
+    icon: 'fa-solid fa-users',
+  },
+  {
+    value: 'consultation',
+    label: 'Help Me Choose',
+    icon: 'fa-solid fa-comments',
+  },
 ];
 
 const proposalModalState = {
-  selectedSolution: 'guidance',
+  selectedSolution: 'consultation',
   selectedQuantity: '1',
 };
 
 const getPageSolution = () => {
   const path = currentPath;
-  if (path.endsWith('/pvc-nfc-business-card.html')) return 'pvc';
-  if (path.endsWith('/metal-nfc-business-card.html')) return 'metal';
-  if (path.endsWith('/for-teams.html')) return 'team';
-  return 'guidance';
+
+  if (path.endsWith('/pvc-nfc-card.html')) return 'pvc';
+  if (path.endsWith('/metal-nfc-card.html')) return 'metal';
+  if (path.endsWith('/for-teams.html')) return 'both';
+
+  return 'consultation';
 };
 
 const getSolutionFromTrigger = (trigger) => {
   const text = `${trigger?.textContent || ''} ${trigger?.getAttribute('aria-label') || ''}`.toLowerCase();
-  const card = trigger?.closest('article, .solution-card, .cards-catalog-item');
+  const card = trigger?.closest('article, .solution-card, .cards-product-card, .cards-catalog-item');
+  const cardId = card?.id?.toLowerCase() || '';
   const cardText = card?.textContent?.toLowerCase() || '';
-  const combined = `${text} ${cardText}`;
 
-  if (combined.includes('metal') || combined.includes('premium')) return 'metal';
-  if (combined.includes('pvc')) return 'pvc';
-  if (combined.includes('team') || combined.includes('employee') || combined.includes('company')) return 'team';
+  if (text.includes('metal') || text.includes('metallic') || text.includes('premium')) return 'metal';
+  if (text.includes('pvc') || text.includes('digital')) return 'pvc';
+  if (text.includes('team') || text.includes('teammate') || text.includes('business')) return 'both';
+
+  if (cardId.includes('metal') || cardText.includes('metal') || cardText.includes('metallic') || cardText.includes('premium')) return 'metal';
+  if (cardId.includes('pvc') || cardText.includes('pvc')) return 'pvc';
+  if (cardText.includes('team') || cardText.includes('teammate') || cardText.includes('business')) return 'both';
+
   return getPageSolution();
 };
 
@@ -228,31 +292,30 @@ const createProposalModal = () => {
   modal.innerHTML = `
     <div class="proposal-modal__overlay" data-proposal-close></div>
     <div class="proposal-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="proposal-modal-title">
-      <button class="proposal-modal__close" type="button" data-proposal-close aria-label="Close proposal form">
+      <button class="proposal-modal__close" type="button" data-proposal-close aria-label="Close proposal">
         <i class="fa-solid fa-xmark" aria-hidden="true"></i>
       </button>
 
       <div class="proposal-form__loading" data-proposal-loading hidden aria-live="polite" aria-label="Submitting request">
         <span aria-hidden="true"></span>
-        <p>Sending your request...</p>
+        <p>Submitting your request...</p>
       </div>
 
       <form class="proposal-form" data-proposal-form>
         <div class="proposal-form__intro">
-          <img class="proposal-form__logo" src="assets/images/taploop-logo.png" alt="TapLoop" loading="lazy" decoding="async">
-          <h2 id="proposal-modal-title">Request Your Quote</h2>
-          <p>Tell us what you need and we will prepare a custom TapLoop recommendation.</p>
+          <img class="proposal-form__logo" src="assets/images/taploop-logo.webp" alt="TapLoop" loading="lazy" decoding="async">
+          <h2 id="proposal-modal-title">Get a proposal in minutes</h2>
+          <p>A TapLoop agent will contact you shortly.</p>
         </div>
 
         <div class="proposal-form__grid">
           <label class="proposal-field">
             <span>Solution type <b aria-hidden="true">*</b></span>
             <select name="solution" required>
-              <option value="pvc">PVC Digital NFC Card</option>
+              <option value="consultation" selected>Help Me Choose</option>
+              <option value="pvc">PVC NFC Card</option>
               <option value="metal">Metal NFC Card</option>
-              <option value="both">PVC and Metal Cards</option>
-              <option value="team">Team Rollout</option>
-              <option value="guidance">Help Me Choose</option>
+              <option value="both">Both</option>
             </select>
           </label>
 
@@ -280,10 +343,9 @@ const createProposalModal = () => {
             <span>Email <b aria-hidden="true">*</b></span>
             <input type="email" name="email" autocomplete="email" required>
           </label>
-
           <label class="proposal-field proposal-field--wide">
-            <span>Briefly tell us what you have in mind <small>optional</small></span>
-            <textarea name="comments" rows="4" placeholder="Example: We need 25 NFC cards for our sales team with one profile per employee."></textarea>
+            <span>Tell us briefly what you have in mind <small>optional</small></span>
+            <textarea name="comments" rows="4" placeholder="Example: We need 15 cards for our sales team, customized with our logo and each rep's details."></textarea>
           </label>
         </div>
 
@@ -291,12 +353,13 @@ const createProposalModal = () => {
 
         <div class="proposal-form__actions">
           <button class="btn btn-primary" type="submit">
-            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Send Request
+            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Get My Proposal
           </button>
         </div>
-        <p class="proposal-form__error" data-proposal-error hidden>We could not send your request. Please try again.</p>
-        <p class="proposal-form__note">We will contact you to confirm details and prepare your quote. No commitment.</p>
+        <p class="proposal-form__error" data-proposal-error hidden>We couldn't send your request. Please try again.</p>
+        <p class="proposal-form__note">We'll contact you to confirm the details and prepare your quote. No commitment.</p>
       </form>
+
     </div>
   `;
 
@@ -317,14 +380,14 @@ const createProposalConfirmationModal = () => {
 
       <div class="proposal-confirmation">
         <span class="proposal-confirmation__icon"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
-        <h2 id="proposal-confirmation-title">We Received Your Request</h2>
-        <p>Our team will review your information and contact you to prepare a custom proposal.</p>
-        <p>You can also send your logo or visual references through WhatsApp to move faster.</p>
+        <h2 id="proposal-confirmation-title">We received your request!</h2>
+        <p>Our team will review the information and get in touch with you to prepare a personalized proposal.</p>
+        <p>In the meantime, you can send us your logo or references on WhatsApp to move faster.</p>
         <div class="proposal-confirmation__actions">
           <a class="btn btn-primary" data-proposal-confirm-whatsapp target="_blank" rel="noopener noreferrer" href="${whatsappUrl}">
             <i class="fa-brands fa-whatsapp" aria-hidden="true"></i> Continue on WhatsApp
           </a>
-          <button class="btn btn-outline" type="button" data-confirmation-close>Close</button>
+          <button class="btn btn-outline" type="button" data-confirmation-close>Cancel</button>
         </div>
       </div>
     </div>
@@ -348,7 +411,12 @@ let proposalTriggerLabel = '';
 const updateProposalSelection = (groupName, value) => {
   const input = proposalModal.querySelector(`[name="${groupName}"]`);
   if (!input) return;
-  input.value = value;
+
+  if (input.tagName === 'SELECT') {
+    input.value = value === 'team' ? 'both' : value;
+  } else {
+    input.value = value;
+  }
 
   if (groupName === 'solution') proposalModalState.selectedSolution = input.value;
   if (groupName === 'quantity') proposalModalState.selectedQuantity = input.value;
@@ -356,7 +424,7 @@ const updateProposalSelection = (groupName, value) => {
 
 const getProposalWhatsappUrl = () => {
   const solution = proposalOptions.find((option) => option.value === proposalModalState.selectedSolution)?.label || 'NFC cards';
-  const message = `Hi, I would like a custom TapLoop quote. Solution: ${solution}. Approximate quantity: ${proposalModalState.selectedQuantity}.`;
+  const message = `Hi, I would like a personalized proposal from TapLoop. Solution: ${solution}. Approximate quantity: ${proposalModalState.selectedQuantity}.`;
 
   return `https://wa.me/526643053834?text=${encodeURIComponent(message)}`;
 };
@@ -391,17 +459,17 @@ const createEmailJsParams = (quoteRequest) => {
   const phone = quoteRequest.phone || 'No phone';
 
   return {
-    title: 'New TapLoop quote request',
+    title: 'New quote request - TapLoop',
     name: quoteRequest.full_name,
-    nombre: quoteRequest.full_name,
-    empresa: company,
+    fullName: quoteRequest.full_name,
+    companyName: company,
     email: quoteRequest.email,
-    correo: quoteRequest.email,
-    telefono: phone,
-    producto: product,
-    cantidad: String(quoteRequest.approximate_quantity),
-    entrega: 'To be confirmed',
-    descripcion: description,
+    emailAddress: quoteRequest.email,
+    phoneNumber: phone,
+    product: product,
+    quantity: String(quoteRequest.approximate_quantity),
+    delivery: 'To be confirmed',
+    description: description,
     message: description,
   };
 };
@@ -427,7 +495,9 @@ const submitQuoteRequest = async (quoteRequest) => {
 const sendQuoteRequestEmail = async (quoteRequest) => {
   const response = await fetch(emailJsApiUrl, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify({
       service_id: emailJsServiceId,
       template_id: emailJsTemplateId,
@@ -449,7 +519,7 @@ const setProposalLoading = (isLoading) => {
   proposalLoading.hidden = !isLoading;
   proposalSubmitButton.innerHTML = isLoading
     ? '<i class="fa-solid fa-circle-notch fa-spin" aria-hidden="true"></i> Sending...'
-    : '<i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Send Request';
+    : '<i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Get My Proposal';
 };
 
 const openProposalModal = (trigger) => {
@@ -492,6 +562,18 @@ const closeProposalConfirmationModal = () => {
   lastFocusedElement?.focus?.();
 };
 
+const trackGoogleAdsQuoteConversion = () => {
+  try {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion', {
+        send_to: 'AW-18177290983/c5TNCJiOhfAcEOf1zdtD',
+      });
+    }
+  } catch (error) {
+    console.warn('Could not log the Google Ads conversion.', error);
+  }
+};
+
 proposalModal.querySelectorAll('[data-proposal-close]').forEach((button) => {
   button.addEventListener('click', closeProposalModal);
 });
@@ -530,7 +612,7 @@ proposalForm.addEventListener('submit', async (event) => {
       sendQuoteRequestEmail(quoteRequest),
     ]);
   } catch (error) {
-    console.error('The quote request could not be completed.', error);
+    console.error('Could not complete the request submission.', error);
     proposalError.hidden = false;
     setProposalLoading(false);
     return;
@@ -550,11 +632,12 @@ proposalForm.addEventListener('submit', async (event) => {
     savedRequests.push(payload);
     window.localStorage.setItem('taploopProposalRequests', JSON.stringify(savedRequests));
   } catch (error) {
-    console.warn('The quote request could not be saved locally.', error);
+    console.warn('Could not save the request locally.', error);
   }
 
   closeProposalModal();
   openProposalConfirmationModal();
+  trackGoogleAdsQuoteConversion();
   setProposalLoading(false);
 });
 
@@ -569,10 +652,10 @@ document.addEventListener('keydown', (event) => {
 });
 
 document.querySelectorAll('a, button').forEach((trigger) => {
-  const label = trigger.textContent.replace(/\s+/g, ' ').trim().toLowerCase();
+  const label = normalizeLabel(trigger.textContent || '');
   const href = trigger.getAttribute('href') || '';
   const isProposalTrigger = (
-    (label.includes('request a quote') || label.includes('open quote form') || label.includes('start a project') || label.includes('start my proposal')) &&
+    isQuoteTriggerLabel(label) &&
     !label.includes('whatsapp') &&
     (href === '#quote' || href.startsWith('mailto:') || trigger.classList.contains('nav-cta') || trigger.classList.contains('btn'))
   );
@@ -588,8 +671,8 @@ document.querySelectorAll('a, button').forEach((trigger) => {
 const whatsappFloat = document.createElement('div');
 whatsappFloat.className = 'whatsapp-float';
 whatsappFloat.innerHTML = `
-  <div class="whatsapp-float-message">Talk to an agent</div>
-  <a class="whatsapp-float-button" href="${whatsappUrl}" target="_blank" rel="noopener" aria-label="Talk to an agent on WhatsApp">
+  <div class="whatsapp-float-message">Chat with an agent</div>
+  <a class="whatsapp-float-button" href="${whatsappUrl}" target="_blank" rel="noopener" aria-label="Chat with an agent on WhatsApp">
     <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
   </a>
 `;

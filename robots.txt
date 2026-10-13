@@ -4,12 +4,12 @@ Allow: /
 # Discovery files for search engines
 Sitemap: https://www.gettaploop.com/sitemap.xml
 
-# Site resources allowed for rendering and indexing
+# Site resources allowed for proper rendering and indexing
 Allow: /assets/
 Allow: /style.css
 Allow: /script.js
 
-# Keep development and temporary files out of the index
+# Avoid indexing temporary or development files if they ever exist
 Disallow: /.git/
 Disallow: /.codex/
 Disallow: /.agents/
