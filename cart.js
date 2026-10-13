@@ -56,7 +56,7 @@
   const cartCount = (cart = getCart()) => cart.reduce((sum, item) => sum + Number(item.quantity || 1), 0);
   const cartTotal = (cart = getCart()) => cart.reduce((sum, item) => sum + Number(item.totalPrice || item.unitPrice * item.quantity), 0);
   const cartPageUrl = `${pathPrefix || ''}/cart.html`;
-  const fallbackImage = `${pathPrefix ? '..' : '.'}/assets/images/taploe-logo.webp`;
+  const fallbackImage = `${pathPrefix ? '..' : '.'}/assets/image/taploop_logo.png`;
   const normalizeImageUrl = (url) => {
     if (!url) return fallbackImage;
     if (/^(https?:|data:|blob:)/.test(url)) return url;

@@ -303,7 +303,7 @@ const createProposalModal = () => {
 
       <form class="proposal-form" data-proposal-form>
         <div class="proposal-form__intro">
-          <img class="proposal-form__logo" src="assets/images/taploop-logo.webp" alt="TapLoop" loading="lazy" decoding="async">
+          <img class="proposal-form__logo" src="assets/image/taploop_logo.png" alt="TapLoop" loading="lazy" decoding="async">
           <h2 id="proposal-modal-title">Get a proposal in minutes</h2>
           <p>A TapLoop agent will contact you shortly.</p>
         </div>
