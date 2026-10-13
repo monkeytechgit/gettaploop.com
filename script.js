@@ -462,9 +462,9 @@ const createEmailJsParams = (quoteRequest) => {
   return {
     title: 'New quote request - TapLoop',
     name: quoteRequest.full_name,
+    email: quoteRequest.email,
     fullName: quoteRequest.full_name,
     companyName: company,
-    email: quoteRequest.email,
     emailAddress: quoteRequest.email,
     phoneNumber: phone,
     product: product,
@@ -472,6 +472,14 @@ const createEmailJsParams = (quoteRequest) => {
     delivery: 'To be confirmed',
     description: description,
     message: description,
+    nombre: quoteRequest.full_name,
+    empresa: company,
+    correo: quoteRequest.email,
+    telefono: phone,
+    producto: product,
+    cantidad: String(quoteRequest.approximate_quantity),
+    entrega: 'To be confirmed',
+    descripcion: description,
   };
 };
 
