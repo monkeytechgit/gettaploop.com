@@ -663,6 +663,8 @@ document.addEventListener('keydown', (event) => {
 });
 
 document.querySelectorAll('a, button').forEach((trigger) => {
+  if (trigger.closest('.proposal-modal')) return;
+
   const label = normalizeLabel(trigger.textContent || '');
   const href = trigger.getAttribute('href') || '';
   const isProposalTrigger = (
