@@ -405,6 +405,7 @@ const proposalError = proposalModal.querySelector('[data-proposal-error]');
 const proposalLoading = proposalModal.querySelector('[data-proposal-loading]');
 const proposalMetadataInput = proposalModal.querySelector('[data-proposal-metadata]');
 const proposalWhatsappLinks = proposalConfirmationModal.querySelectorAll('[data-proposal-confirm-whatsapp]');
+const defaultProposalErrorMessage = proposalError.textContent;
 let lastFocusedElement = null;
 let proposalTriggerLabel = '';
 
@@ -526,6 +527,7 @@ const openProposalModal = (trigger) => {
   lastFocusedElement = trigger;
   proposalTriggerLabel = trigger?.textContent?.replace(/\s+/g, ' ').trim() || 'Request a Quote';
   proposalForm.reset();
+  proposalError.textContent = defaultProposalErrorMessage;
   proposalError.hidden = true;
   setProposalLoading(false);
   updateProposalSelection('solution', getSolutionFromTrigger(trigger));
@@ -598,11 +600,20 @@ proposalModal.addEventListener('input', (event) => {
 proposalForm.addEventListener('submit', async (event) => {
   event.preventDefault();
 
-  if (!proposalForm.reportValidity()) return;
+  if (!proposalForm.checkValidity()) {
+    const firstInvalid = proposalForm.querySelector(':invalid');
+    firstInvalid?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    firstInvalid?.focus({ preventScroll: true });
+    proposalForm.reportValidity();
+    proposalError.textContent = 'Please fill in the highlighted required fields before sending.';
+    proposalError.hidden = false;
+    return;
+  }
 
   const formData = new FormData(proposalForm);
   const quoteRequest = createQuoteRequestPayload(formData);
 
+  proposalError.textContent = defaultProposalErrorMessage;
   proposalError.hidden = true;
   setProposalLoading(true);
 
