@@ -244,7 +244,22 @@
         "priceValidUntil": "2027-12-31",
         "availability": "https://schema.org/InStock",
         "itemCondition": "https://schema.org/NewCondition",
-        "seller": {"@id": "https://www.gettaploop.com/#organization"}
+        "seller": {"@id": "https://www.gettaploop.com/#organization"},
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {"@type": "MonetaryAmount", "value": "0.00", "currency": "USD"},
+          "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "US"},
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "DAY"},
+            "transitTime": {"@type": "QuantitativeValue", "minValue": 3, "maxValue": 5, "unitCode": "DAY"}
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "US",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        }
       },
       "audience": {
         "@type": "Audience",
@@ -293,6 +308,7 @@
       "thumbnailUrl": "https://img.youtube.com/vi/VVfdq-J2Q08/hqdefault.jpg",
       "embedUrl": "https://www.youtube-nocookie.com/embed/VVfdq-J2Q08",
       "contentUrl": "https://youtu.be/VVfdq-J2Q08",
+      "uploadDate": "2026-10-11T21:03:34-07:00",
       "inLanguage": "en-US"
     },
     {
